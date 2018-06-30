@@ -118,18 +118,9 @@ do
 			Msg( '{green}-- Happy farming!' );
 		}
 
-		if( $Data[ 'response' ][ 'level' ] > 20 )
-		{
-			$PreferLowZones = 1;
-		}
 	}
 }
 while( !isset( $Data[ 'response' ][ 'score' ] ) && sleep( $FailSleep ) === 0 );
-
-if( isset( $_SERVER[ 'PREFER_LOW_ZONES' ] ) )
-{
-	$PreferLowZones = (bool)$_SERVER[ 'PREFER_LOW_ZONES' ];
-}
 
 do
 {
@@ -402,11 +393,6 @@ do
 			'{normal} - Remaining: {yellow}' . number_format( $Data[ 'next_level_score' ] - $Data[ 'new_score' ] ) .
 			'{normal} - ETA: {green}' . $Hours . 'h ' . $Minutes . 'm (' . date_format( $Date , "jS H:i T" ) . ')'
 		);
-
-		if( $Data[ 'new_level' ] > 20 && !isset( $_SERVER[ 'PREFER_LOW_ZONES' ] ) )
-		{
-			$PreferLowZones = 1;
-		}
 	}
 }
 while( true );
@@ -540,7 +526,7 @@ function GetPlanetState( $Planet, &$ZonePaces, $PreferLowZones, $WaitTime )
 		}
 
 		// Skip zone 0 if it's not a boss and has no capture progress, since it's currently not allowing joins on new planets.
-		if ( $Zone[ 'zone_position' ] == 0 && $Zone[ 'capture_progress' ] < 5 )
+		if ( $Zone[ 'zone_position' ] == 0 && $Zone[ 'capture_progress' ] < .05 )
 		{
 			continue;
 		}
