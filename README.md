@@ -67,26 +67,3 @@ php cheat.php token2
 2. To build: `docker build . -t steamdb/saliencheat`
 3. To run: `docker run -it --init --rm -e TOKEN=<32 character token from gettoken url> steamdb/saliencheat`
 4. To stop running, Ctrl+C
-
-## Heroku
-### Deploying with web-console
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-1. Click the button above.
-2. Set SALIENS_TOKEN & IGNORE_UPDATES.
-3. That's all!
-
-To check if it works, visit logs at https://dashboard.heroku.com/apps/[YOUR_APP_NAME]/logs
-
-### Updating
-
-If you are using Windows, open cmd by pressing <kbd>win</kbd>+<kbd>r</kbd> -> type `cmd` -> press <kbd>Enter</kbd> and then enter the following:
-```bash
-git clone https://git.heroku.com/[APP_NAME].git -o heroku
-cd [APP_NAME]
-git remote add upstream https://github.com/SteamDatabase/SalienCheat.git
-git fetch upstream
-git merge remotes/upstream/master
-git push heroku master
-```
